@@ -81,7 +81,7 @@ Rails.application.configure do
   end
 
   # Do not dump schema after migrations.
-  config.active_record.dump_schema_after_migration = false
+  # config.active_record.dump_schema_after_migration = false
 
   client = Dalli::Client.new((ENV["MEMCACHIER_SERVERS"] || "").split(","),
                              :username => ENV["MEMCACHIER_USERNAME"],
