@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/zeisler/visualize_ruby.git
-  revision: 820722ab28214e2e9abb9a30ea9c228db103bfb8
+  revision: 0acee64a4a0e529517331bfdc50ee1d40a76653a
   specs:
     visualize_ruby (0.3.0)
       dissociated_introspection (~> 0.9.1)
