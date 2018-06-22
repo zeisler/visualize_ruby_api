@@ -11,6 +11,10 @@ class VisualizeRubyController < ApplicationController
     render json: { exception: e.message}, status: :bad_request
   end
 
+  def version
+    render json: {version: VisualizeRuby::VERSION }
+  end
+
   private
 
   def ruby_code
