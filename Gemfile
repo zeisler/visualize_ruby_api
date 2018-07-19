@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.5.1'
+ruby '2.5.0'
 gem 'visualize_ruby', github: "zeisler/visualize_ruby"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.0'
@@ -12,7 +12,8 @@ gem 'rack-cors'
 gem 'rack-cache'
 gem 'dalli'
 gem 'kgio'
-
+gem 'redis'
+gem 'le'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 

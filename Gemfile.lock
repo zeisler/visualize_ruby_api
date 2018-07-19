@@ -1,8 +1,8 @@
 GIT
   remote: https://github.com/zeisler/visualize_ruby.git
-  revision: 4afb2a7707884314d5ad1f9c3218e544a15c21c7
+  revision: a4f8280c1518721d738778928184b50875503db7
   specs:
-    visualize_ruby (0.6.0)
+    visualize_ruby (0.9.0)
       dissociated_introspection (~> 0.9.1)
       graphviz (~> 1.0)
       parser (~> 2.1, >= 2.5.1.0)
@@ -83,6 +83,7 @@ GEM
       concurrent-ruby (~> 1.0)
     ice_nine (0.11.2)
     kgio (2.11.2)
+    le (2.7.6)
     listen (3.1.5)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
@@ -105,7 +106,7 @@ GEM
     nio4r (2.3.1)
     nokogiri (1.8.2)
       mini_portile2 (~> 2.3.0)
-    parser (2.5.1.0)
+    parser (2.5.1.2)
       ast (~> 2.4.0)
     process-group (1.1.0)
     process-pipeline (1.0.1)
@@ -117,7 +118,7 @@ GEM
     pry-byebug (3.6.0)
       byebug (~> 10.0)
       pry (~> 0.10)
-    puma (3.11.4)
+    puma (3.12.0)
     rack (2.0.5)
     rack-cache (1.8.0)
       rack (>= 0.4)
@@ -152,6 +153,7 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
+    redis (4.0.1)
     ruby_dep (1.5.0)
     spring (2.0.2)
       activesupport (>= 4.2)
@@ -169,7 +171,7 @@ GEM
     thread_safe (0.3.6)
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
-    unparser (0.2.7)
+    unparser (0.2.8)
       abstract_type (~> 0.0.7)
       adamantium (~> 0.2.0)
       concord (~> 0.1.5)
@@ -189,6 +191,7 @@ DEPENDENCIES
   byebug
   dalli
   kgio
+  le
   listen (>= 3.0.5, < 3.2)
   pry
   pry-byebug
@@ -196,13 +199,14 @@ DEPENDENCIES
   rack-cache
   rack-cors
   rails (~> 5.2.0)
+  redis
   spring
   spring-watcher-listen (~> 2.0.0)
   tzinfo-data
   visualize_ruby!
 
 RUBY VERSION
-   ruby 2.5.1p57
+   ruby 2.5.0p0
 
 BUNDLED WITH
    1.16.2

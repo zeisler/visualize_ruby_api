@@ -32,5 +32,6 @@ module VisualizeRubyApi
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
     config.cache_store = :dalli_store
+    config.autoload_paths << Rails.root.join('lib')
   end
 end

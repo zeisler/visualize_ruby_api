@@ -2,18 +2,20 @@ require "visualize_ruby"
 
 class VisualizeRubyController < ApplicationController
   def show
-    expires_in 1.hour, public: true
-    case format
-    when :png, :dot
+    expires_in CacheGraph.to_i, public: true
+    if download_file
       tempfile.binmode
       graph
       send_file tempfile.path, type: media_type, x_sendfile: true
       tempfile.close
     else
-      render json: { graph: graph }
+      render json: { graph: graph, format: format }
     end
   rescue Parser::SyntaxError => e
-    render json: { exception: e.message }, status: :bad_request
+    render json: error_response(e), status: :bad_request
+  rescue => e
+    log_error(e)
+    render json: error_response(e), status: :internal_server_error
   end
 
   def version
@@ -23,27 +25,21 @@ class VisualizeRubyController < ApplicationController
   private
 
   def graph
-    graphs = VisualizeRuby::Builder.new(ruby_code: ruby_code).build
-    VisualizeRuby::Graphviz.new(
-        *graphs
-    ).to_graph(path: path, format: format)
+    CreateGraph.call(
+        path:           path,
+        format:         format,
+        ruby_code:      params["ruby_code"],
+        render_options: params["render_options"]
+    )
   end
 
-  def ruby_code
-    JSON.parse(request.raw_post)["ruby_code"]
-  end
 
   def format
     params.fetch(:format, :svg).to_sym
   end
 
   def path
-    case format
-    when :svg
-      nil
-    else
-      tempfile
-    end
+    tempfile if download_file
   end
 
   def media_type
@@ -52,10 +48,26 @@ class VisualizeRubyController < ApplicationController
       "application/png"
     when :dot
       "text/plain"
+    when :svg
+      "image/svg+xml"
     end
   end
 
   def tempfile
     @tempfile ||= Tempfile.new("graph")
+  end
+
+  def log_error(e)
+    Rails.logger.error e.class.name
+    Rails.logger.error e.message
+    Rails.logger.error e.backtrace.join("\n")
+  end
+
+  def error_response(e)
+    { exception: { message: e.message, type: e.class.name } }
+  end
+
+  def download_file
+    !!params[:download_file]
   end
 end
