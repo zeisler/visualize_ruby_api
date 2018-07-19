@@ -1,6 +1,7 @@
 require "visualize_ruby"
 require File.join(Rails.root, "lib/create_graph")
 require File.join(Rails.root, "lib/cache_graph")
+require File.join(Rails.root, "lib/create_key")
 
 class VisualizeRubyController < ApplicationController
   def show
