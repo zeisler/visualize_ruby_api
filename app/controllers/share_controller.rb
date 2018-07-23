@@ -27,7 +27,7 @@ class ShareController < ApplicationController
     {
         format:         :svg,
         ruby_code:      ruby_code,
-        render_options: params["render_options"]
+        render_options: params.permit!["render_options"].to_h
     }
   end
 end
