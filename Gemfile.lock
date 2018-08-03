@@ -1,9 +1,9 @@
 GIT
   remote: https://github.com/zeisler/visualize_ruby.git
-  revision: cbf6ea021db30da06cff7e411274881e961148b2
+  revision: bb8d0c0cc08a9feb40f5632f0e79d00d866f7670
   specs:
-    visualize_ruby (0.11.0)
-      dissociated_introspection (~> 0.9.1)
+    visualize_ruby (0.13.0)
+      dissociated_introspection (~> 0.12.0)
       graphviz (~> 1.0)
       parser (~> 2.1, >= 2.5.1.0)
 
@@ -69,9 +69,9 @@ GEM
     crass (1.0.4)
     dalli (2.7.8)
     diff-lcs (1.3)
-    dissociated_introspection (0.9.1)
-      parser (~> 2.1, >= 2.1.9)
-      unparser (~> 0.2, >= 0.2.6)
+    dissociated_introspection (0.12.0)
+      parser (~> 2.2, >= 2.2.1)
+      unparser (~> 0.2, >= 0.2.8)
     equalizer (0.0.11)
     erubi (1.7.1)
     ffi (1.9.25)
