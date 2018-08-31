@@ -47,12 +47,12 @@ class VisualizeRubyController < ApplicationController
 
   def media_type
     case format
-    when :png
-      "application/png"
     when :dot
       "text/plain"
     when :svg
       "image/svg+xml"
+    else
+      "application/#{format}"
     end
   end
 
