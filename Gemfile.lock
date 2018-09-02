@@ -1,8 +1,8 @@
 GIT
   remote: https://github.com/zeisler/visualize_ruby.git
-  revision: bb8d0c0cc08a9feb40f5632f0e79d00d866f7670
+  revision: f6c5d0830a21a158fbc0c2688c4fe8c319236c58
   specs:
-    visualize_ruby (0.13.0)
+    visualize_ruby (0.14.0)
       dissociated_introspection (~> 0.12.0)
       graphviz (~> 1.0)
       parser (~> 2.1, >= 2.5.1.0)
@@ -77,7 +77,7 @@ GEM
     ffi (1.9.25)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
-    graphviz (1.0.0)
+    graphviz (1.1.0)
       process-pipeline
     i18n (1.0.1)
       concurrent-ruby (~> 1.0)

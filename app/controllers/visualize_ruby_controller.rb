@@ -8,11 +8,11 @@ class VisualizeRubyController < ApplicationController
     expires_in CacheGraph.to_i, public: true
     if download_file
       tempfile.binmode
-      graph
+      grapher
       send_file tempfile.path, type: media_type, x_sendfile: true
       tempfile.close
     else
-      render json: { graph: graph, format: format }
+      render json: { graph: grapher.output, format: format, graphs: grapher.graphs }
     end
   rescue Parser::SyntaxError => e
     render json: error_response(e), status: :bad_request
@@ -27,15 +27,14 @@ class VisualizeRubyController < ApplicationController
 
   private
 
-  def graph
-    CreateGraph.call(
-        path:           path,
-        format:         format,
-        ruby_code:      params["ruby_code"],
-        render_options: params.permit!["render_options"].to_h
+  def grapher
+    @grapher ||= CreateGraph.call(
+      path:           path,
+      format:         format,
+      ruby_code:      params["ruby_code"],
+      render_options: params.permit!["render_options"].to_h
     )
   end
-
 
   def format
     params.fetch(:format, :svg).to_sym
@@ -67,7 +66,7 @@ class VisualizeRubyController < ApplicationController
   end
 
   def error_response(e)
-    { exception: { message: e.message, type: e.class.name } }
+    { exception: { message: e.message, error_type: e.class.name } }
   end
 
   def download_file
