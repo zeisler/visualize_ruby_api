@@ -98,7 +98,9 @@ GEM
     memoizable (0.4.2)
       thread_safe (~> 0.3, >= 0.3.1)
     method_source (0.9.0)
-    mimemagic (0.3.2)
+    mimemagic (0.3.10)
+      nokogiri (~> 1)
+      rake
     mini_mime (1.0.0)
     mini_portile2 (2.3.0)
     minitest (5.11.3)
@@ -118,7 +120,8 @@ GEM
     pry-byebug (3.6.0)
       byebug (~> 10.0)
       pry (~> 0.10)
-    puma (3.12.0)
+    puma (4.3.9)
+      nio4r (~> 2.0)
     rack (2.0.5)
     rack-cache (1.8.0)
       rack (>= 0.4)
@@ -195,7 +198,7 @@ DEPENDENCIES
   listen (>= 3.0.5, < 3.2)
   pry
   pry-byebug
-  puma (~> 3.11)
+  puma (~> 4.3)
   rack-cache
   rack-cors
   rails (~> 5.2.0)
