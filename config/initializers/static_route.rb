@@ -54,7 +54,6 @@
 module ActionDispatch
   module Routing
     class StaticResponder < Endpoint
-
       attr_accessor :path, :file_handler
 
       def initialize(path)
@@ -72,7 +71,6 @@ module ActionDispatch
       def inspect
         "static('#{path}')"
       end
-
     end
 
     class Mapper

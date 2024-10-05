@@ -10,6 +10,8 @@ require "action_controller/railtie"
 require "action_mailer/railtie"
 require "action_view/railtie"
 require "action_cable/engine"
+require 'action_dispatch'
+require "action_dispatch/middleware/static.rb"
 # require "sprockets/railtie"
 # require "rails/test_unit/railtie"
 
@@ -21,6 +23,8 @@ module VisualizeRubyApi
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
+
+    # config/application.rb or in an initializer
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
@@ -35,3 +39,9 @@ module VisualizeRubyApi
     config.autoload_paths << Rails.root.join('lib')
   end
 end
+
+Rails.application.middleware.insert_before(
+  Rack::Sendfile,
+  ActionDispatch::Static,
+  Rails.root.join('public').to_s
+)
