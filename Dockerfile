@@ -9,7 +9,7 @@ RUN apt-get update && apt-get install -y \
 WORKDIR /app
 
 # Copy the Gemfile and Gemfile.lock into the working directory
-COPY Gemfile Gemfile.lock ./
+COPY Gemfile ./
 
 # Install the required gems
 RUN bundle install
@@ -18,11 +18,11 @@ RUN bundle install
 COPY . .
 
 # Expose the port that the application runs on
-EXPOSE 3000
+EXPOSE 3001
 
 ENV RAILS_ENV=production
 
 CMD service redis-server start && \
     SECRET_KEY_BASE=$(rails secret) && \
     echo "Generated SECRET_KEY_BASE: $SECRET_KEY_BASE" && \
-    SECRET_KEY_BASE=$SECRET_KEY_BASE rails server
+    SECRET_KEY_BASE=$SECRET_KEY_BASE rails server -p 3001
