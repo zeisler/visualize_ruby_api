@@ -12,7 +12,7 @@ WORKDIR /app
 COPY Gemfile ./
 
 # Install the required gems
-RUN bundle install
+RUN bundle install --without development test
 
 # Copy the rest of the application code into the working directory
 COPY . .

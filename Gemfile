@@ -8,13 +8,13 @@ gem 'rails', '~> 5.2.8.1'
 gem 'actionpack'
 # Use Puma as the app server
 gem 'puma', '~> 4.3.12'
-gem "pry"
 gem 'rack-cors'
 gem 'rack-cache'
 gem 'dalli'
 gem 'kgio'
 gem 'redis'
 gem 'le'
+gem 'ffi', "~> 1.16.3"
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 # gem 'rack-cors'
@@ -23,6 +23,7 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'pry-byebug'
+  gem "pry"
 end
 
 group :development do
